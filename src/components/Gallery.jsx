@@ -79,7 +79,7 @@ export default function Gallery() {
               textTransform: "uppercase",
             }}
           >
-            Our Gallery
+            Our Products
           </Typography>
 
           <Typography

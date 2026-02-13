@@ -53,21 +53,9 @@ export default function Navbar() {
 
   const megaMenuContent = {
     weavingMachinery: {
-      title: "Weaving Machinery",
+
       columns: [
-        [
-          { heading: "Jacquard Machine", items: true },
-          "Sun200 Jacquard Machine",
-          "Sun300 400 500 Jacquard Machine",
-          "Sun600 Jacquard Machine",
-        ],
-        [
-          { heading: "High Speed Rapier Loom", items: true },
-          "QJHB10 Rapier Loom",
-          "QJHB10 Rapier Loom",
-          "DF3I Rapier Loom",
-          "DF5I Rapier Loom",
-        ],
+
         [
           { heading: "Low Speed Rapier Loom", items: true },
           "Ultra-wide Width Weaving",
@@ -77,12 +65,38 @@ export default function Navbar() {
           "GA736 Rapier Loom",
           "GA788 Rapier Loom",
         ],
+
+        [
+          { heading: "High Speed Rapier Loom", items: true },
+          "QJHB10 Rapier Loom",
+          "QJHB10 Rapier Loom",
+          "DF3I Rapier Loom",
+          "DF5I Rapier Loom",
+        ],
+
+        [
+          { heading: "High Speed Rapier Loom", items: true },
+          "QJHB10 Rapier Loom",
+          "QJHB10 Rapier Loom",
+          "DF3I Rapier Loom",
+          "DF5I Rapier Loom",
+        ],
+
         [
           { heading: "Jacquard Loom", items: true },
           "DF3JI Rapier Jacquard Loom",
           "DF7JI Rapier Jacquard Loom",
           "QJHB10J Rapier Jacquard Loom",
         ],
+
+        [
+          { heading: "Jacquard Machine", items: true },
+          "Sun200 Jacquard Machine",
+          "Sun300 400 500 Jacquard Machine",
+          "Sun600 Jacquard Machine",
+        ],
+        
+        
         [
           { heading: "Towel Loom", items: true },
           "DF7IM Dobby Towel Loom",
@@ -118,7 +132,6 @@ export default function Navbar() {
     },
 
     textileParts: {
-      title: "Textile Machine Parts",
       columns: [
         [
           { heading: "Rapier Loom Spare Parts", items: true },
@@ -184,7 +197,6 @@ export default function Navbar() {
 
     
     bearing: {
-      title: "WEAVING ACCESORIES",
       columns: [
         [
           "Tools",
@@ -248,19 +260,6 @@ export default function Navbar() {
                   boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
                 }}
               />
-              <Typography
-                variant="h6"
-                sx={{
-                  ml: 2,
-                  fontWeight: 800,
-                  color: "#fff",
-                  display: { xs: "none", sm: "block" },
-                  fontSize: "1.1rem",
-                  letterSpacing: "0.5px",
-                }}
-              >
-                SPARE TEX
-              </Typography>
             </Box>
 
             {/* Desktop Menu */}
@@ -360,6 +359,21 @@ export default function Navbar() {
                   background: "linear-gradient(135deg, #fff 0%, #F8FAFC 100%)",
                   borderTop: "4px solid #4CA3FF",
                   borderRadius: 0,
+                  maxHeight: "70vh",
+                  overflowY: "auto",
+                  "&::-webkit-scrollbar": {
+                    width: "8px",
+                  },
+                  "&::-webkit-scrollbar-track": {
+                    background: "#f1f1f1",
+                  },
+                  "&::-webkit-scrollbar-thumb": {
+                    background: "#4CA3FF",
+                    borderRadius: "4px",
+                    "&:hover": {
+                      background: "#2563EB",
+                    },
+                  },
                 }}
               >
                 <Container maxWidth="xl">
@@ -379,58 +393,74 @@ export default function Navbar() {
                   <Grid container spacing={{ xs: 3, md: 5 }}>
                     {megaMenuContent[menuType]?.columns.map(
                       (column, colIndex) => (
-                        <Grid item xs={12} sm={6} md={4} key={colIndex}>
-                          {column.map((item, index) => (
-                            typeof item === "object" && item.heading ? (
-                              <Typography
-                                key={index}
-                                sx={{
-                                  fontWeight: 800,
-                                  color: "#1B2559",
-                                  mb: 2,
-                                  mt: index > 0 ? 3 : 0,
-                                  fontSize: "0.95rem",
-                                  textTransform: "uppercase",
-                                  letterSpacing: "0.5px",
-                                }}
-                              >
-                                {item.heading}
-                              </Typography>
-                            ) : (
-                              <Typography
-                                key={index}
-                                sx={{
-                                  cursor: "pointer",
-                                  mb: 2,
-                                  fontWeight: 600,
-                                  color: "#333",
-                                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                                  position: "relative",
-                                  paddingLeft: "0px",
-                                  "&:hover": {
-                                    color: "#4CA3FF",
-                                    transform: "translateX(8px)",
-                                  },
-                                  "&::before": {
-                                    content: '""',
-                                    position: "absolute",
-                                    left: 0,
-                                    top: "50%",
-                                    transform: "translateY(-50%)",
-                                    width: 0,
-                                    height: "2px",
-                                    backgroundColor: "#4CA3FF",
-                                    transition: "width 0.3s ease",
-                                  },
-                                  "&:hover::before": {
-                                    width: "8px",
-                                  },
-                                }}
-                              >
-                                {item}
-                              </Typography>
-                            )
-                          ))}
+                        <Grid item xs={12} sm={6} md={4} key={colIndex} sx={{ position: "relative" }}>
+                          {/* Vertical divider line */}
+                          {colIndex > 0 && (
+                            <Box
+                              sx={{
+                                position: "absolute",
+                                left: 0,
+                                top: 0,
+                                bottom: 0,
+                                width: "1px",
+                                background: "linear-gradient(180deg, transparent 0%, #E5E7EB 20%, #E5E7EB 80%, transparent 100%)",
+                              }}
+                            />
+                          )}
+                          
+                          <Box sx={{ pl: colIndex > 0 ? 3 : 0, maxHeight: "400px", overflowY: "auto", "&::-webkit-scrollbar": { width: "6px" }, "&::-webkit-scrollbar-track": { background: "transparent" }, "&::-webkit-scrollbar-thumb": { background: "#D1D5DB", borderRadius: "3px", "&:hover": { background: "#9CA3AF" } } }}>
+                            {column.map((item, index) => (
+                              typeof item === "object" && item.heading ? (
+                                <Typography
+                                  key={index}
+                                  sx={{
+                                    fontWeight: 800,
+                                    color: "#1B2559",
+                                    mb: 2,
+                                    mt: index > 0 ? 3 : 0,
+                                    fontSize: "0.95rem",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.5px",
+                                  }}
+                                >
+                                  {item.heading}
+                                </Typography>
+                              ) : (
+                                <Typography
+                                  key={index}
+                                  sx={{
+                                    cursor: "pointer",
+                                    mb: 2,
+                                    fontWeight: 600,
+                                    color: "#333",
+                                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                                    position: "relative",
+                                    paddingLeft: "0px",
+                                    "&:hover": {
+                                      color: "#4CA3FF",
+                                      transform: "translateX(8px)",
+                                    },
+                                    "&::before": {
+                                      content: '""',
+                                      position: "absolute",
+                                      left: 0,
+                                      top: "50%",
+                                      transform: "translateY(-50%)",
+                                      width: 0,
+                                      height: "2px",
+                                      backgroundColor: "#4CA3FF",
+                                      transition: "width 0.3s ease",
+                                    },
+                                    "&:hover::before": {
+                                      width: "8px",
+                                    },
+                                  }}
+                                >
+                                  {item}
+                                </Typography>
+                              )
+                            ))}
+                          </Box>
                         </Grid>
                       )
                     )}
