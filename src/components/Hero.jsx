@@ -167,7 +167,7 @@ export default function Hero() {
                   letterSpacing: "0.5px",
                 }}
               >
-                ✨ Premium Textile Solutions
+                 Premium Textile Solutions
               </Typography>
             </Box>
 
